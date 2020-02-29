@@ -1,1 +1,1 @@
-# flowmaker by mindmakr (c) 2020.
+# Flowmaker by Mindmakr (c) 2020.
