@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using services.Middlewares;
+using FlowmakerService.Middlewares;
 
-namespace services
+namespace FlowmakerService
 {
     public class Startup
     {
@@ -32,7 +32,7 @@ namespace services
             app.UseRouting();
             app.Map("/map1", HandleMapTest1);
             app.Map("/map2", HandleMapTest2);
-            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async context =>

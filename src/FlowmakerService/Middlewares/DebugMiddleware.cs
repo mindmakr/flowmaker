@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace services.Middlewares
+namespace FlowmakerService.Middlewares
 {
     public class DebugMiddleware
     {
@@ -21,10 +21,7 @@ namespace services.Middlewares
         public async Task InvokeAsync(HttpContext context)
         {
             await _next(context);
-            // Inspecting or updating response
-            var newBody = new MemoryStream();
-            //newBody.Seek(0, SeekOrigin.Begin);
-            //var newContent = new StreamReader(newBody).ReadToEnd();
+            // Added to Response.
             var newContent = ", Copyright (c) 2020 Mindmakr Limited.";
             await context.Response.WriteAsync(newContent);
         }
