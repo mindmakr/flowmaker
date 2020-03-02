@@ -14,11 +14,15 @@ namespace Flowmaker.CLI
         static void Main(string[] args)
         {
             var fm = new FlowmakerConnection();
-            fm.GetConsumer().Do();
+            var task = fm.GetTask("happydays");
+            task.Subscribe();
             Thread.Sleep(500);
-            var p = fm.GetPublisher();
-            p.Do("Happy Days");
-            p.Do("Today is Monday");
+
+
+            //var p = fm.GetTask();
+            task.Send("Happy Days");
+            task._exit = true;
+            task.Send("Today is Monday");
             Console.ReadKey();
         }
     }

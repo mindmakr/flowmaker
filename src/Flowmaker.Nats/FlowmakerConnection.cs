@@ -3,7 +3,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Flowmaker.Contracts.Interfaces;
 using NATS.Client;
 using NATS.Client.Rx;
 using NATS.Client.Rx.Ops;
@@ -23,9 +22,9 @@ namespace Flowmaker.Nats
             _connection = factorty.CreateConnection(_natsOptions);
         }
 
-        public FlowmakerPublisher GetPublisher()
+        public FlowmakerTask GetTask(string subject)
         {
-            return new FlowmakerPublisher(_connection);
+            return new FlowmakerTask(_connection, subject);
         }
         public FlowmakerConsumer GetConsumer()
         {
@@ -33,30 +32,67 @@ namespace Flowmaker.Nats
         }
     }
 
-    public class FlowmakerPublisher
+    public class FlowmakerTask
     {
-        private bool _exit;
-
+        public bool _exit;
+        public readonly string Subject;
         public NC.IConnection Connection { get; }
 
-        public FlowmakerPublisher(NC.IConnection connection)
+        public FlowmakerTask(NC.IConnection connection, string subject)
         {
             Connection = connection;
+            Subject = subject;
         }
 
-        public void Do(string message)
+        public void Send(string message)
         {
             byte[] data = Encoding.UTF8.GetBytes(message);
-            Connection.Publish("nats.demo.pubsub", data);
+            Connection.Publish(Subject, data);
         }
+
+        public void Subscribe()
+        {
+            Task.Run(() =>
+            {
+                ISyncSubscription sub = Connection.SubscribeSync(Subject);
+                while (!_exit)
+                {
+                    var message = sub.NextMessage();
+                    if (message != null)
+                    {
+                        string data = Encoding.UTF8.GetString(message.Data);
+                        LogMessage(data);
+                    }
+                }
+            });
+        }
+
+        public static void LogMessage(byte[] payload)
+        {
+            var message = Encoding.UTF8.GetString(payload);
+            Console.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.fffffff")} - {message}");
+        }
+
+        public static void LogMessage(string message)
+        {
+            Console.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.fffffff")} - {message}");
+        }
+
     }
 }
 
+
 public class FlowmakerConsumer
 {
-    private bool _exit;
-
+    public bool _exit;
+    public readonly string Subject;
     public NC.IConnection Connection { get; }
+
+
+    public FlowmakerConsumer(string subject)
+    {
+        Subject = subject;
+    }
 
     public FlowmakerConsumer(NC.IConnection connection)
     {
@@ -67,7 +103,7 @@ public class FlowmakerConsumer
     {
         Task.Run(() =>
         {
-            ISyncSubscription sub = Connection.SubscribeSync("nats.demo.pubsub");
+            ISyncSubscription sub = Connection.SubscribeSync(Subject);
             while (!_exit)
             {
                 var message = sub.NextMessage();
