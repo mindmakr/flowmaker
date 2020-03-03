@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Linq;
+using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Flowmaker.Nats;
-using NATS.Client;
-using NATS.Client.Rx;
-using NATS.Client.Rx.Ops;
+
 
 namespace Flowmaker.CLI
 {
@@ -14,16 +11,31 @@ namespace Flowmaker.CLI
         static void Main(string[] args)
         {
             var fm = new FlowmakerConnection();
-            var task = fm.GetTask("happydays");
-            task.Subscribe();
-            Thread.Sleep(500);
+            var task = fm.GetClient("App.Channels.A");
+            task.Subscribe((msg) => Work(msg));
+            Thread.Sleep(1000);
+            task.Send(Encoding.UTF8.GetBytes("Happy Days"));
+            task.Send(Encoding.UTF8.GetBytes("Today is Monday"));
 
 
-            //var p = fm.GetTask();
-            task.Send("Happy Days");
-            task._exit = true;
-            task.Send("Today is Monday");
             Console.ReadKey();
+        }
+
+        public static bool Work(byte[] data)
+        {
+            LogMessage(Encoding.UTF8.GetString(data));
+            return false;
+        }
+
+        public static void LogMessage(byte[] payload)
+        {
+            var message = Encoding.UTF8.GetString(payload);
+            Console.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.fffffff")} - {message}");
+        }
+
+        public static void LogMessage(string message)
+        {
+            Console.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.fffffff")} - {message}");
         }
     }
 }

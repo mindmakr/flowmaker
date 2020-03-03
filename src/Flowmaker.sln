@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmaker.Nats", "Flowmaker
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmaker.CLI", "Flowmaker.CLI\Flowmaker.CLI.csproj", "{7611506E-35B1-452A-B331-66A54564FDDD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmaker.TestClient", "Flowmaker.TestClient\Flowmaker.TestClient.csproj", "{CFC5D999-973F-40D8-A51C-883AE3A2B289}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{7611506E-35B1-452A-B331-66A54564FDDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7611506E-35B1-452A-B331-66A54564FDDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7611506E-35B1-452A-B331-66A54564FDDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFC5D999-973F-40D8-A51C-883AE3A2B289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFC5D999-973F-40D8-A51C-883AE3A2B289}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFC5D999-973F-40D8-A51C-883AE3A2B289}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFC5D999-973F-40D8-A51C-883AE3A2B289}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
