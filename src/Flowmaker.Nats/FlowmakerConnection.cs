@@ -12,7 +12,7 @@ namespace Flowmaker.Nats
         {
             var factorty = new NC.ConnectionFactory();
             _natsOptions = NC.ConnectionFactory.GetDefaultOptions();
-            _natsOptions.Url = natsServerUrl == null ? "nats://demo.nats.io:4222" : natsServerUrl;
+            _natsOptions.Url = natsServerUrl == null ? "demo.nats.io:4222" : natsServerUrl;
             _connection = factorty.CreateConnection(_natsOptions);
         }
 
