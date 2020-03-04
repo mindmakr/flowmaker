@@ -10,8 +10,10 @@ namespace Flowmaker.TestClient
         {
             var fm = new FlowmakerConnection();
             var task = fm.GetClient("App.Channels.A");
-            task.Send(Encoding.UTF8.GetBytes("Client is saying Hello"));
-            task.Send(Encoding.UTF8.GetBytes("World"));
+            for (int i = 0; i < 100; i++)
+            {
+                task.Send(Encoding.UTF8.GetBytes($"Client Message {i}"));
+            }
         }
 
     }
