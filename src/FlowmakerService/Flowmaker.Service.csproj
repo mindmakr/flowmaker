@@ -8,4 +8,15 @@
     <StartAction>Project</StartAction>
     <ApplicationURL>https://localhost:5001;http://localhost:5000</ApplicationURL>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Flowmaker.Contracts\Flowmaker.Contracts.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\Flowmaker.Nats\Flowmaker.Nats.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NATS.Client" Version="0.10.0" />
+  </ItemGroup>
 </Project>

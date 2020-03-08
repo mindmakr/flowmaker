@@ -2,8 +2,6 @@
 using Flowmaker.Contracts.Nats;
 using System.Threading;
 using System;
-using System.Threading.Tasks;
-using NATS.Client;
 
 namespace Flowmaker.Nats
 {

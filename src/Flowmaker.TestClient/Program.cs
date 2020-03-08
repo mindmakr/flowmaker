@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using Flowmaker.Nats;
 
 namespace Flowmaker.TestClient
@@ -15,6 +14,5 @@ namespace Flowmaker.TestClient
                 channel.Send(Encoding.UTF8.GetBytes($"Client Message {i}"));
             }
         }
-
     }
 }

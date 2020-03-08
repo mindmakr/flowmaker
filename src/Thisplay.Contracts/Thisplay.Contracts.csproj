@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Thisplay.Player\Pages\Index.cshtml" />
+    <None Remove="Thisplay.Player\Pages\Privacy.cshtml" />
+    <None Remove="Thisplay.Player\Pages\Error.cshtml" />
+    <None Remove="Thisplay.Player\Pages\Shared\_Layout.cshtml" />
+    <None Remove="Thisplay.Player\Pages\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Remove="Thisplay.Player\Pages\_ViewStart.cshtml" />
+    <None Remove="Thisplay.Player\Properties\launchSettings.json" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <None Remove="Thisplay.Player\wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Remove="Thisplay.Player\wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Remove="Thisplay.Player\wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Remove="Thisplay.Player\wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Remove="Thisplay.Player\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Remove="Thisplay.Player\Pages\_ViewImports.cshtml" />
+    <None Remove="Thisplay.Player\wwwroot\js\site.js" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\LICENSE" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\css\bootstrap.css" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <None Remove="Thisplay.Player\wwwroot\lib\jquery\LICENSE.txt" />
+    <None Remove="Thisplay.Player\wwwroot\lib\jquery\dist\jquery.js" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <None Remove="Thisplay.Player\wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Remove="Thisplay.Player\wwwroot\lib\jquery\dist\jquery.min.map" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <None Remove="Thisplay.Player\wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Remove="Thisplay.Player\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Remove="Thisplay.Player\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Remove="Thisplay.Player\wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt" />
+  </ItemGroup>
+</Project>

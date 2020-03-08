@@ -13,6 +13,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmaker.CLI", "Flowmaker.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmaker.TestClient", "Flowmaker.TestClient\Flowmaker.TestClient.csproj", "{CFC5D999-973F-40D8-A51C-883AE3A2B289}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Comms", "Comms", "{265BF93F-B0CE-4788-B718-53BBF2D60C99}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{E32E09D7-3A9D-4F52-A6D9-A6B774065103}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Thisplay", "Thisplay", "{74980C37-53FB-443C-B15A-98F6E4DEB0E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thisplay.Contracts", "Thisplay.Contracts\Thisplay.Contracts.csproj", "{10F65DB8-79B5-426F-880C-8B8A04171EBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thisplay.Player", "Thisplay.Player\Thisplay.Player.csproj", "{EEA5E2BE-8B2C-419E-B734-91BAA82C27A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thisplay.Client", "Thisplay.Client\Thisplay.Client.csproj", "{7FA476B3-22B4-42C9-9414-AF1C1D207104}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,11 +51,31 @@ Global
 		{CFC5D999-973F-40D8-A51C-883AE3A2B289}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFC5D999-973F-40D8-A51C-883AE3A2B289}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFC5D999-973F-40D8-A51C-883AE3A2B289}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10F65DB8-79B5-426F-880C-8B8A04171EBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10F65DB8-79B5-426F-880C-8B8A04171EBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10F65DB8-79B5-426F-880C-8B8A04171EBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10F65DB8-79B5-426F-880C-8B8A04171EBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEA5E2BE-8B2C-419E-B734-91BAA82C27A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEA5E2BE-8B2C-419E-B734-91BAA82C27A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEA5E2BE-8B2C-419E-B734-91BAA82C27A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEA5E2BE-8B2C-419E-B734-91BAA82C27A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FA476B3-22B4-42C9-9414-AF1C1D207104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FA476B3-22B4-42C9-9414-AF1C1D207104}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FA476B3-22B4-42C9-9414-AF1C1D207104}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FA476B3-22B4-42C9-9414-AF1C1D207104}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF51CD69-2608-4238-AEEB-5342D525C7AF}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{698136A7-CC0C-4098-9A57-740F306224D1} = {265BF93F-B0CE-4788-B718-53BBF2D60C99}
+		{7364D0EF-830B-452A-B001-887CD82C4AE0} = {265BF93F-B0CE-4788-B718-53BBF2D60C99}
+		{74980C37-53FB-443C-B15A-98F6E4DEB0E1} = {E32E09D7-3A9D-4F52-A6D9-A6B774065103}
+		{10F65DB8-79B5-426F-880C-8B8A04171EBB} = {74980C37-53FB-443C-B15A-98F6E4DEB0E1}
+		{EEA5E2BE-8B2C-419E-B734-91BAA82C27A7} = {74980C37-53FB-443C-B15A-98F6E4DEB0E1}
+		{7FA476B3-22B4-42C9-9414-AF1C1D207104} = {74980C37-53FB-443C-B15A-98F6E4DEB0E1}
 	EndGlobalSection
 EndGlobal
