@@ -1,7 +1,12 @@
-﻿namespace Flowmaker.Contracts.Nats
+﻿using System;
+
+namespace Flowmaker.Contracts.Nats
 {
     public interface IFlowmakerConnection
     {
-        IFlowmakerClient GetClient(string subject);
+        IFlowmakerChannel GetChannel<T>(string subject, T job) where T : IFlowmakerJob;
+        IFlowmakerChannel GetChannel(string subject, Func<byte[], bool> handler);
+        IFlowmakerChannel GetChannel(string subject);
+        bool WaitTillReady();
     }
 }

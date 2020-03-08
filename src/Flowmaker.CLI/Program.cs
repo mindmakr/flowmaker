@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text;
-using System.Threading;
+using Flowmaker.Contracts.Nats;
 using Flowmaker.Nats;
 
 
@@ -11,20 +11,17 @@ namespace Flowmaker.CLI
         static void Main(string[] args)
         {
             var fm = new FlowmakerConnection();
-            var task = fm.GetClient("App.Channels.A");
-            task.Subscribe((msg) => Work(msg));
-            Thread.Sleep(1000);
-            task.Send(Encoding.UTF8.GetBytes("Happy Days"));
-            task.Send(Encoding.UTF8.GetBytes("Today is Monday"));
-
-
+            //var task = fm.GetChannel(new MyJob(), "App.Channels.A");
+            var channel = fm.GetChannel("App.Channels.A", (msg) => Work(msg));
+            channel.Send(Encoding.UTF8.GetBytes("Happy Days"));
+            channel.Send(Encoding.UTF8.GetBytes("Today is Monday"));
             Console.ReadKey();
         }
 
         public static bool Work(byte[] data)
         {
             LogMessage(Encoding.UTF8.GetString(data));
-            return false;
+            return true;
         }
 
         public static void LogMessage(byte[] payload)
@@ -36,6 +33,15 @@ namespace Flowmaker.CLI
         public static void LogMessage(string message)
         {
             Console.WriteLine($"{DateTime.Now.ToString("HH:mm:ss.fffffff")} - {message}");
+        }
+    }
+
+    class MyJob : IFlowmakerJob
+    {
+        public bool Execute(byte[] data)
+        {
+            Program.LogMessage(Encoding.UTF8.GetString(data));
+            return true;
         }
     }
 }

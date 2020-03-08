@@ -1,5 +1,9 @@
 ﻿using NC = NATS.Client;
 using Flowmaker.Contracts.Nats;
+using System.Threading;
+using System;
+using System.Threading.Tasks;
+using NATS.Client;
 
 namespace Flowmaker.Nats
 {
@@ -8,6 +12,7 @@ namespace Flowmaker.Nats
     {
         private NC.IConnection _connection;
         private NC.Options _natsOptions;
+        private bool _isInReadyState = false;
         public FlowmakerConnection(string natsServerUrl = null)
         {
             var factorty = new NC.ConnectionFactory();
@@ -16,9 +21,31 @@ namespace Flowmaker.Nats
             _connection = factorty.CreateConnection(_natsOptions);
         }
 
-        public IFlowmakerClient GetClient(string subject)
+        public IFlowmakerChannel GetChannel(string subject)
         {
-            return new FlowmakerClient(_connection, subject);
+            return new FlowmakerChannel(this, _connection, subject);
+        }
+
+        public IFlowmakerChannel GetChannel<T>(string subject, T job) where T : IFlowmakerJob
+        {
+            var channel = new FlowmakerChannel(this, _connection, subject);
+            channel.Handle(job);
+            return channel;
+        }
+
+        public IFlowmakerChannel GetChannel(string subject, Func<byte[], bool> handler)
+        {
+            var channel = new FlowmakerChannel(this, _connection, subject);
+            channel.Handle(handler);
+            return channel;
+        }
+
+        public bool WaitTillReady()
+        {
+            if (_isInReadyState) return true;
+            Thread.Sleep(1000);
+            _isInReadyState = true;
+            return _isInReadyState;
         }
     }
 }
