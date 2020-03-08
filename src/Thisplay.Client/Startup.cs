@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Flowmaker.Nats;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,6 +14,7 @@ namespace Thisplay.Client
 {
     public class Startup
     {
+        public static string msg = "Hello World!";
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -21,6 +24,10 @@ namespace Thisplay.Client
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            var fm = new FlowmakerConnection();
+            var channel = fm.GetChannel("App.Channels.A", Work);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -32,9 +39,14 @@ namespace Thisplay.Client
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Hello World!");
+                    await context.Response.WriteAsync(msg);
                 });
             });
+        }
+        public static bool Work(byte[] data)
+        {
+            msg = Encoding.UTF8.GetString(data);
+            return true;
         }
     }
 }
