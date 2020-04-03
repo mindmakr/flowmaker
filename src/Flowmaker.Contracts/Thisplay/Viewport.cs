@@ -5,7 +5,7 @@ namespace Flowmaker.Contracts.Thisplay
 {
     public class Viewport
     {
-        public IEnumerable<Viewpart> Children { get; set; }
+        public IList<Viewpart> Children { get; set; }
         public Viewport()
         {
             Children = new List<Viewpart>();
