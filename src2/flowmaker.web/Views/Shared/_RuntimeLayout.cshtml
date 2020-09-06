@@ -1,0 +1,53 @@
+﻿@model flowmaker.web.ViewModels.BaseViewModel;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@Model.ProductTitle</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@@shoelace-style/shoelace@2.0.0-beta.18/dist/shoelace/shoelace.css">
+    <link rel="stylesheet" href="~/css/stylesheet.css" />
+</head>
+<body>
+    @if (Model.IsEditable)
+    {
+        <sl-drawer label="@Model.ProductTitle" class="drawer-scrolling">
+            <div style="height: 75vh;">
+                <partial name="_LoginPartial" />
+            </div>
+            <sl-button slot="footer" type="primary">Close</sl-button>
+        </sl-drawer>
+        <sl-alert type="info" open>
+            <sl-button type="default" size="medium" circle><sl-icon name="gear"></sl-icon></sl-button>
+            <strong>Edit @Model.WorkspaceTitle</strong><br>
+        </sl-alert>
+    }
+    @RenderBody()
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@@shoelace-style/shoelace@2.0.0-beta.18/dist/shoelace/shoelace.esm.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+<script>
+    const container = document.querySelector('.details-group-example');
+
+    // Close all other details when one is shown
+    container.addEventListener('slShow', event => {
+        [...container.querySelectorAll('sl-details')].map(details => (details.open = event.target === details));
+    });
+
+    (() => {
+        const drawer = document.querySelector('.drawer-scrolling');
+        const openButton = drawer.nextElementSibling;
+        const closeButton = drawer.querySelector('sl-button[type="primary"]');
+
+        openButton.addEventListener('click', () => drawer.show());
+        closeButton.addEventListener('click', () => drawer.hide());
+    })();
+</script>
+<style>
+    .details-group-example sl-details:not(:last-of-type) {
+        margin-bottom: var(--sl-spacing-xx-small);
+    }
+</style>

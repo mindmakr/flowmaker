@@ -1,0 +1,14 @@
+﻿@model flowmaker.web.ViewModels.HomepageViewModel;
+@{
+    ViewData["Title"] = Model.ProductTitle;
+}
+
+@if (Model.IsAvailable)
+{
+    <h2 class="details-group-example">@Model.Title</h2>
+}
+else
+{
+    <h2>I am lonely here, lets make something incredible today</h2>
+}
+
