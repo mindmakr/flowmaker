@@ -11,16 +11,7 @@
 <body>
     @if (Model.IsEditable)
     {
-        <sl-drawer label="@Model.ProductTitle" class="drawer-scrolling">
-            <div style="height: 75vh;">
-                <partial name="_LoginPartial" />
-            </div>
-            <sl-button slot="footer" type="primary">Close</sl-button>
-        </sl-drawer>
-        <sl-alert type="info" open>
-            <sl-button type="default" size="medium" circle><sl-icon name="gear"></sl-icon></sl-button>
-            <strong>Edit @Model.WorkspaceTitle</strong><br>
-        </sl-alert>
+        <partial name="_DrawerPartial" />
     }
     @RenderBody()
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -29,25 +20,4 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
-<script>
-    const container = document.querySelector('.details-group-example');
 
-    // Close all other details when one is shown
-    container.addEventListener('slShow', event => {
-        [...container.querySelectorAll('sl-details')].map(details => (details.open = event.target === details));
-    });
-
-    (() => {
-        const drawer = document.querySelector('.drawer-scrolling');
-        const openButton = drawer.nextElementSibling;
-        const closeButton = drawer.querySelector('sl-button[type="primary"]');
-
-        openButton.addEventListener('click', () => drawer.show());
-        closeButton.addEventListener('click', () => drawer.hide());
-    })();
-</script>
-<style>
-    .details-group-example sl-details:not(:last-of-type) {
-        margin-bottom: var(--sl-spacing-xx-small);
-    }
-</style>

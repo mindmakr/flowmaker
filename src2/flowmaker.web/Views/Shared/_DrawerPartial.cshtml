@@ -1,0 +1,43 @@
+﻿@model flowmaker.web.ViewModels.BaseViewModel;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<sl-drawer label="@User.Identity.Name!" class="drawer-overview">
+    <sl-button id="closeBtn" slot="footer" type="primary">Close</sl-button>
+</sl-drawer>
+<sl-alert open width="100%">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <sl-button id="openBtn" type="default">
+            <sl-icon slot="prefix" name="gear"></sl-icon>
+            Edit
+        </sl-button>
+        <sl-button type="default">
+            <sl-icon slot="prefix" name="stop"></sl-icon>
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" submit>Logout</button>
+            </form>
+        </sl-button>
+    }
+    else
+    {
+        <sl-button type="default" href="/Identity/Account/Login">
+            <sl-icon slot="prefix" name="play"></sl-icon>
+            Login
+        </sl-button>
+        <sl-button type="default" href="/Identity/Account/Register">
+            <sl-icon slot="prefix" name="stop"></sl-icon>
+            Register
+        </sl-button>
+    }
+</sl-alert>
+<script>
+    (() => {
+        const drawer = document.querySelector('.drawer-overview');
+        const openButton = document.querySelector('#openBtn');
+        const closeButton = document.querySelector('#closeBtn');
+
+        openButton.addEventListener('click', () => drawer.show());
+        closeButton.addEventListener('click', () => drawer.hide());
+    })();
+</script>

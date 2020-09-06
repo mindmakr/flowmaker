@@ -30,7 +30,9 @@ namespace flowmaker.web.Controllers
 
         public IActionResult Privacy()
         {
-            return View();
+            var hostname = Request.Host.Host.ToLower();
+            var slot = _dbContext.Slots.Include(t => t.Workspace).FirstOrDefault(s => hostname == s.Hostname.ToLower());
+            return View(new HomepageViewModel(slot));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
