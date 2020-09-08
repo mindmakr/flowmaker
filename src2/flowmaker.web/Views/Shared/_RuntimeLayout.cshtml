@@ -11,7 +11,7 @@
 <body>
     @if (Model.IsEditable)
     {
-        <partial name="_DrawerPartial" />
+        <vc:drawer/>
     }
     @RenderBody()
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

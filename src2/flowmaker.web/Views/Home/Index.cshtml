@@ -2,12 +2,12 @@
 @{
     ViewData["Title"] = Model.ProductTitle;
 }
-@if (Model.IsAvailable)
+@if (!Model.IsAvailable)
 {
-    <h2 class="details-group-example">@Model.Title</h2>
+    <vc:lonely />
 }
 else
 {
-    <h2>It is lonely here, lets make this site an incredible site today!</h2>
+
 }
 

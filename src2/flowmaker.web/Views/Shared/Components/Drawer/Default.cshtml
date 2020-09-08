@@ -1,0 +1,10 @@
+﻿@model flowmaker.web.ViewModels.BaseViewModel;
+<div class="drawer">
+    @if (Model.IsAvailable)
+    {
+        <h2 class="details-group-example">@Model.Title</h2>
+    }
+    <div class="drawer-panel">
+        <vc:login />
+    </div>
+</div>
