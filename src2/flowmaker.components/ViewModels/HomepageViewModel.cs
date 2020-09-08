@@ -9,9 +9,5 @@ namespace flowmaker.components.ViewModels
 
     public class HomepageViewModel : BaseViewModel
     {
-        public HomepageViewModel(Slot slot) : base(slot)
-        {
-
-        }
     }
 }

@@ -12,6 +12,8 @@ using flowmaker.web.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using AutoMapper;
+using flowmaker.web.Mappers;
 
 namespace flowmaker.web
 {
@@ -27,6 +29,8 @@ namespace flowmaker.web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(ViewModelsProfile) /*, ...*/);
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
