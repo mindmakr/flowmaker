@@ -1,13 +1,13 @@
-﻿@model             flowmaker.components.ViewModels.HomepageViewModel;
+﻿@model flowmaker.components.ViewModels.Homepage;
 @{
 
 }
-@if (!Model.IsAvailable)
+@if (!Model.Environment.IsAvailable)
 {
     <vc:lonely />
 }
 else
 {
-    <div>@Model.Title</div>
+    <div>@Model.Environment.Title</div>
 }
 

@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using AutoMapper;
 using flowmaker.web.Mappers;
+using flowmaker.components.ViewModels;
 
 namespace flowmaker.web
 {
@@ -30,7 +31,7 @@ namespace flowmaker.web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(ViewModelsProfile) /*, ...*/);
-
+            services.AddSingleton<ViewModelMapperService>();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));

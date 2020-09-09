@@ -9,7 +9,7 @@ namespace flowmaker.web.Mappers
     {
         public ViewModelsProfile()
         {
-            CreateMap<Slot, HomepageViewModel>()
+            CreateMap<Slot, Environment>()
                 .ForMember(dest => dest.Name, act => act.MapFrom(src => src.Name))
                 .ForMember(dest => dest.Title, act => act.MapFrom(src => src.Title))
                 .ForMember(dest => dest.WorkspaceName, act => act.MapFrom(src => src.Workspace.Name))
