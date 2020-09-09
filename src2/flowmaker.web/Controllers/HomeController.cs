@@ -28,14 +28,14 @@ namespace flowmaker.web.Controllers
         {
             var hostname = Request.Host.Host.ToLower();
             var slot = _dbContext.Slots.Include(t => t.Workspace).FirstOrDefault(s => hostname == s.Hostname.ToLower());
-            return View(_mapper.Map<HomepageViewModel>(slot==null?new Slot():slot));
+            return View(slot == null ? HomepageViewModel.NotAvailable : _mapper.Map<HomepageViewModel>(slot == null ? new Slot() : slot));
         }
 
         public IActionResult Privacy()
         {
             var hostname = Request.Host.Host.ToLower();
             var slot = _dbContext.Slots.Include(t => t.Workspace).FirstOrDefault(s => hostname == s.Hostname.ToLower());
-            return View(_mapper.Map<HomepageViewModel>(slot == null ? new Slot() : slot));
+            return View(slot == null ? HomepageViewModel.NotAvailable : _mapper.Map<HomepageViewModel>(slot == null ? new Slot() : slot));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

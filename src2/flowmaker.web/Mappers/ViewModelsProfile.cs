@@ -1,10 +1,6 @@
 ﻿using AutoMapper;
 using flowmaker.components.ViewModels;
 using flowmaker.models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace flowmaker.web.Mappers
 {
@@ -19,7 +15,6 @@ namespace flowmaker.web.Mappers
                 .ForMember(dest => dest.WorkspaceName, act => act.MapFrom(src => src.Workspace.Name))
                 .ForMember(dest => dest.IsAvailable, act => act.MapFrom(src => src!=null))
                 .ForMember(dest => dest.WorkspaceTitle, act => act.MapFrom(src => src.Workspace.Title));
-            // Use CreateMap... Etc.. here (Profile methods are the same as configuration methods)
         }
     }
 }
