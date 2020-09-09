@@ -1,17 +1,28 @@
-﻿<!DOCTYPE html>
+﻿@model flowmaker.web.ViewModels.ViewModelBase;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Model.ProductTitle</title>
-    <!--link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@@shoelace-style/shoelace@2.0.0-beta.18/dist/shoelace/shoelace.css">-->
+    <title>@Model.Environment.WorkspaceTitle</title>
     <link rel="stylesheet" href="~/css/stylesheet.css" />
 </head>
 <body>
-    <vc:drawer />
-    @RenderBody()
+    @if (!Model.Environment.IsAvailable)
+    {
+        <vc:lonely />
+        IgnoreBody();
+    }
+    else if (Model.Environment.IsEditable)
+    {
+        <vc:drawer />
+        @RenderBody();
+    }
+    else
+    {
+        @RenderBody();
+    }
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <!--<script type="module" src="https://cdn.jsdelivr.net/npm/@@shoelace-style/shoelace@2.0.0-beta.18/dist/shoelace/shoelace.esm.js"></script>-->
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>

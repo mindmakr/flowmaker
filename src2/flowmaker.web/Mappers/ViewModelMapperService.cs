@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using flowmaker.models;
+using flowmaker.web.ViewModels;
 
-namespace flowmaker.components.ViewModels
+namespace flowmaker.web.Mappers
 {
     public class ViewModelMapperService
     {
@@ -10,15 +11,11 @@ namespace flowmaker.components.ViewModels
         {
             _mapper = mapper;
         }
-        public Homepage From(Slot slot)
+        public Environment From(Slot slot)
         {
-            var homepage = new Homepage
-            {
-                Environment = slot == null
-                ? new Environment { IsAvailable = false }
-                : _mapper.Map<Environment>(slot)
-            };
-            return homepage;
+            return slot == null
+            ? new Environment { IsAvailable = false }
+            : _mapper.Map<Environment>(slot);
         }
     }
 }

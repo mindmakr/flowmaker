@@ -6,7 +6,8 @@ using Microsoft.Extensions.Logging;
 using flowmaker.web.Models;
 using flowmaker.web.Data;
 using Microsoft.EntityFrameworkCore;
-using flowmaker.components.ViewModels;
+using flowmaker.web.ViewModels;
+using flowmaker.web.Mappers;
 
 namespace flowmaker.web.Controllers
 {
@@ -26,14 +27,14 @@ namespace flowmaker.web.Controllers
         {
             var hostname = Request.Host.Host.ToLower();
             var slot = _dbContext.Slots.Include(t => t.Workspace).FirstOrDefault(s => hostname == s.Hostname.ToLower());
-            return View(_vmms.From(slot));
+            return View(new Homepage { Environment = _vmms.From(slot) });
         }
 
         public IActionResult Privacy()
         {
             var hostname = Request.Host.Host.ToLower();
             var slot = _dbContext.Slots.Include(t => t.Workspace).FirstOrDefault(s => hostname == s.Hostname.ToLower());
-            return View(_vmms.From(slot));
+            return View(new Privacy { Environment = _vmms.From(slot) });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

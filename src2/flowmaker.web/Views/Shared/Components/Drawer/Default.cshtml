@@ -1,13 +1,9 @@
-﻿@model flowmaker.components.ViewModels.Homepage;
+﻿@model flowmaker.web.ViewModels.ViewModelBase;
+@{ 
+
+}
 <div class="drawer">
-    @if (Model.Environment.IsAvailable)
-    {
-        <h2>@Model.Environment.Title</h2>
-    }
-    @if (Model.Environment.IsEditable)
-    {
-        <div class="drawer-panel">
-            <vc:login />
-        </div>
-    }
+    <div class="drawer-panel">
+        <vc:login />
+    </div>
 </div>

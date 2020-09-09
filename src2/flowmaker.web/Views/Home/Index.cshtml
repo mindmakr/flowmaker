@@ -1,13 +1,3 @@
-﻿@model flowmaker.components.ViewModels.Homepage;
-@{
-
-}
-@if (!Model.Environment.IsAvailable)
-{
-    <vc:lonely />
-}
-else
-{
-    <div>@Model.Environment.Title</div>
-}
+﻿@model             flowmaker.web.ViewModels.Homepage;
+<div>Welcome to the Homepage</div>
 

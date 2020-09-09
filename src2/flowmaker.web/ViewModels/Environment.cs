@@ -1,7 +1,5 @@
-﻿using flowmaker.models;
-using System;
-
-namespace flowmaker.components.ViewModels
+﻿
+namespace flowmaker.web.ViewModels
 {
     public class Environment
     {
@@ -10,10 +8,10 @@ namespace flowmaker.components.ViewModels
 
         }
 
-        public string Title { get; set; } = String.Empty;
-        public string Name { get; set; } = String.Empty;
-        public string WorkspaceTitle { get; set; } = String.Empty;
-        public string WorkspaceName { get; set; } = String.Empty;
+        public string Title { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string WorkspaceTitle { get; set; } = string.Empty;
+        public string WorkspaceName { get; set; } = string.Empty;
         public bool IsEditable { get; set; } = false;
         public bool IsAvailable { get; set; } = false;
 

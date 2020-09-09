@@ -1,15 +1,2 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
-}
-<h1>@ViewData["Title"]</h1>
-
-
-@if (Model.IsAvailable)
-{
-    <h2 class="details-group-example">@Model.Title</h2>
-    <p>Use this page to detail your site's privacy policy.</p>
-}
-else
-{
-    <h2>I am lonely here, lets make something incredible today</h2>
-}
+﻿@model  flowmaker.web.ViewModels.Privacy;
+<div>Use this page to detail your site's privacy policy for your @Model.Environment.WorkspaceTitle</div>

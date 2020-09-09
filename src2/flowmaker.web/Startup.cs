@@ -14,7 +14,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using AutoMapper;
 using flowmaker.web.Mappers;
-using flowmaker.components.ViewModels;
 
 namespace flowmaker.web
 {

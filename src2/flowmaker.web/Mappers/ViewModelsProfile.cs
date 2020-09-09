@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using flowmaker.components.ViewModels;
 using flowmaker.models;
+using flowmaker.web.ViewModels;
 
 namespace flowmaker.web.Mappers
 {
