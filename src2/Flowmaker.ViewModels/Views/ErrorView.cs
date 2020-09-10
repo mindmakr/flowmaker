@@ -1,8 +1,8 @@
 using System;
 
-namespace Flowmaker.Web.ViewModels
+namespace Flowmaker.ViewModels.Views
 {
-    public class ErrorViewModel
+    public class ErrorView
     {
         public string RequestId { get; set; }
 

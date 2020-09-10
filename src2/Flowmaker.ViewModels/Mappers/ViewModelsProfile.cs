@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Flowmaker.Data.Entities;
-using Flowmaker.Web.ViewModels;
+using Flowmaker.Entities;
+using Flowmaker.ViewModels.Views;
 
-namespace Flowmaker.Web.Mappers
+namespace Flowmaker.ViewModels.Mappers
 {
     // This is the approach starting with version 5
     public class ViewModelsProfile : Profile

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Flowmaker.Data.Entities
+namespace Flowmaker.Entities
 {
     public abstract class EntityObject
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Flowmaker.Data.Entities
+namespace Flowmaker.Entities
 {
     public class Workspace : EntityObject
     {

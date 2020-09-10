@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Flowmaker.Data.Entities;
-using Flowmaker.Web.ViewModels;
+using Flowmaker.Entities;
+using Flowmaker.ViewModels.Views;
 
-namespace Flowmaker.Web.Mappers
+namespace Flowmaker.ViewModels.Mappers
 {
     public class ViewModelMapperService
     {

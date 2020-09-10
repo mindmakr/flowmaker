@@ -19,11 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Flowmaker.Data\Flowmaker.Data.csproj" />
-    <ProjectReference Include="..\Flowmaker.Domains\Flowmaker.Domains.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\" />
+    <ProjectReference Include="..\Flowmaker.ViewModels\Flowmaker.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

@@ -7,7 +7,7 @@ namespace Flowmaker.Web.Components
         //public async Task<IViewComponentResult> InvokeAsync(int maxPriority, bool isDone)
         public IViewComponentResult Invoke()
         {
-            return View();
+            return View(ViewData.Model as ViewModels.Components.Drawer);
         }
     }
 }

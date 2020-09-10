@@ -1,4 +1,4 @@
-﻿namespace Flowmaker.Data.Entities
+﻿namespace Flowmaker.Entities
 {
     public class Flow : EntityObject
     {

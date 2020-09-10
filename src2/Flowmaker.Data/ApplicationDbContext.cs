@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Flowmaker.Data.Entities;
+using Flowmaker.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 /*
@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
     }
     var options = serviceProvider.GetService<DbContextOptions<BloggingContext>>();
  */
-namespace Flowmaker.Web.Data
+namespace Flowmaker.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

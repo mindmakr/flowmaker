@@ -1,4 +1,4 @@
-﻿namespace Flowmaker.Web.ViewModels
+﻿namespace Flowmaker.ViewModels.Views
 {
     public class Environment
     {
