@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Flowmaker.Domains
+namespace Flowmaker.Data.Entities
 {
-    public class Workspace : DomainObject
+    public class Workspace : EntityObject
     {
         public ICollection<Slot> Environments { get; } = new List<Slot>();
     }

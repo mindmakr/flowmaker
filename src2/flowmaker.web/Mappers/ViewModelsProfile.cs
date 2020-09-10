@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Flowmaker.Domains;
+using Flowmaker.Data.Entities;
 using Flowmaker.Web.ViewModels;
 
 namespace Flowmaker.Web.Mappers

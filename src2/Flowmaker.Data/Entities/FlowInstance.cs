@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Flowmaker.Domains
+namespace Flowmaker.Data.Entities
 {
-    public class FlowInstance : DomainObject
+    public class FlowInstance : EntityObject
     {
 
         public string Slug { get; set; }

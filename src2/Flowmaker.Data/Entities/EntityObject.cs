@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Flowmaker.Domains
+namespace Flowmaker.Data.Entities
 {
-    public abstract class DomainObject
+    public abstract class EntityObject
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

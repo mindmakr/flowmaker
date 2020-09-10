@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Flowmaker.Domains;
+using Flowmaker.Data.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 /*
@@ -67,13 +67,13 @@ namespace Flowmaker.Web.Data
         {
             var entries = ChangeTracker
                 .Entries()
-                .Where(e => e.Entity is DomainObject && (
+                .Where(e => e.Entity is EntityObject && (
                         e.State == EntityState.Added
                         || e.State == EntityState.Modified));
 
             foreach (var entityEntry in entries)
             {
-                if (!(entityEntry.Entity is DomainObject entity)) break;
+                if (!(entityEntry.Entity is EntityObject entity)) break;
 
                 entity.UpdatedAt = DateTime.Now;
 

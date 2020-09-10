@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Flowmaker.Domains
+namespace Flowmaker.Data.Entities
 {
-    public class Slot : DomainObject
+    public class Slot : EntityObject
     {
         public string Hostname { get; set; }
         public Guid WorkspaceId { get; set; }

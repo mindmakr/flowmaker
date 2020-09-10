@@ -6,7 +6,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Flowmaker.Web.Data;
 using Flowmaker.Web.Mappers;
-using Flowmaker.Web.Models;
 using Flowmaker.Web.ViewModels;
 
 namespace Flowmaker.Web.Controllers

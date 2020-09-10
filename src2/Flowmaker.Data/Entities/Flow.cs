@@ -1,6 +1,6 @@
-﻿namespace Flowmaker.Domains
+﻿namespace Flowmaker.Data.Entities
 {
-    public class Flow : DomainObject
+    public class Flow : EntityObject
     {
         public string Slug { get; set; }
         public string ParentSlug { get; set; }
