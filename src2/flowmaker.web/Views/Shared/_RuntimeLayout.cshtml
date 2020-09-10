@@ -8,20 +8,28 @@
     <link rel="stylesheet" href="~/css/stylesheet.css" />
 </head>
 <body>
-    @if (!Model.Environment.IsAvailable)
-    {
-        <vc:lonely />
-        IgnoreBody();
-    }
-    else if (Model.Environment.IsEditable)
-    {
-        <vc:drawer />
-        @RenderBody();
-    }
-    else
-    {
-        @RenderBody();
-    }
+    <div id="fmContainer">
+        <vc:header />
+        @if (!Model.Environment.IsAvailable)
+        {
+            <vc:lonely />
+            IgnoreBody();
+        }
+        else if (Model.Environment.IsEditable)
+        {
+            <vc:editor />
+            <div id="fmBody">
+                @RenderBody()
+            </div>
+        }
+        else
+        {
+            <div id="fmBody">
+                @RenderBody()
+            </div>
+        }
+        <vc:footer />
+    </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)

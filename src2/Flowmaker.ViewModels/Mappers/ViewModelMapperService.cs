@@ -18,9 +18,9 @@ namespace Flowmaker.ViewModels.Mappers
             ? new EnvironmentVm { IsAvailable = false }
             : _mapper.Map<EnvironmentVm>(slot);
         }
-        public DrawerVm ToDrawerVm(HomepageVm vm)
+        public EditorVm ToDrawerVm(HomepageVm vm)
         {
-            return new DrawerVm { Environment = vm.Environment };
+            return new EditorVm { Environment = vm.Environment };
         }
     }
 }

@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Flowmaker.Web.Components
 {
-    public class Drawer : ViewComponent
+    public class Editor : ViewComponent
     {
         ViewModelMapperService _mapperService;
-        public Drawer(ViewModelMapperService mapperService)
+        public Editor(ViewModelMapperService mapperService)
         {
             _mapperService = mapperService;
         }
