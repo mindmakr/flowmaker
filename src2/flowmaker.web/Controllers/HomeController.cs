@@ -21,7 +21,6 @@ namespace Flowmaker.Web.Controllers
             _logger = logger;
             _dbContext = dbContext;
         }
-
         public IActionResult Index()
         {
             var hostname = Request.Host.Host.ToLower();

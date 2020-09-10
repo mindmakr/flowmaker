@@ -55,6 +55,15 @@ namespace Flowmaker.Web
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+            app.Use(async (context, next) =>
+            {
+                await next();
+                if (context.Response.StatusCode == 404)
+                {
+                    context.Request.Path = "/Home";
+                    await next();
+                }
+            });
             app.UseStaticFiles();
 
             app.UseRouting();
