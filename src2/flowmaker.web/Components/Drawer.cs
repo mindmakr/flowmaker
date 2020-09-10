@@ -1,13 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Flowmaker.ViewModels.Mappers;
+using Flowmaker.ViewModels.Views;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Flowmaker.Web.Components
 {
     public class Drawer : ViewComponent
     {
+        ViewModelMapperService _mapperService;
+        public Drawer(ViewModelMapperService mapperService)
+        {
+            _mapperService = mapperService;
+        }
         //public async Task<IViewComponentResult> InvokeAsync(int maxPriority, bool isDone)
         public IViewComponentResult Invoke()
         {
-            return View(ViewData.Model as ViewModels.Components.Drawer);
+            return View(_mapperService.ToDrawerVm(ViewData.Model as HomepageVm));
         }
     }
 }

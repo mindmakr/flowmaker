@@ -26,20 +26,20 @@ namespace Flowmaker.Web.Controllers
         {
             var hostname = Request.Host.Host.ToLower();
             var slot = _dbContext.Slots.Include(t => t.Workspace).FirstOrDefault(s => hostname == s.Hostname.ToLower());
-            return View(new Homepage { Environment = _vmms.From(slot) });
+            return View(new HomepageVm { Environment = _vmms.ToEnvironmentVm(slot) });
         }
 
         public IActionResult Privacy()
         {
             var hostname = Request.Host.Host.ToLower();
             var slot = _dbContext.Slots.Include(t => t.Workspace).FirstOrDefault(s => hostname == s.Hostname.ToLower());
-            return View(new Privacy { Environment = _vmms.From(slot) });
+            return View(new PrivacyVm { Environment = _vmms.ToEnvironmentVm(slot) });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorView { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorVm { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

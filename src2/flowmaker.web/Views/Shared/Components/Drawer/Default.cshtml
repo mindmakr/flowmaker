@@ -1,9 +1,10 @@
-﻿@model             Flowmaker.ViewModels.Components.Drawer;
+﻿@model Flowmaker.ViewModels.Components.DrawerVm;
 @{ 
 
 }
 <div class="drawer">
     <div class="drawer-panel">
+        @Model.Environment.ProductTitle
         <vc:login />
     </div>
 </div>

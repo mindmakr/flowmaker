@@ -9,7 +9,7 @@ namespace Flowmaker.ViewModels.Mappers
     {
         public ViewModelsProfile()
         {
-            CreateMap<Slot, Environment>()
+            CreateMap<Slot, EnvironmentVm>()
                 .ForMember(dest => dest.Name, act => act.MapFrom(src => src.Name))
                 .ForMember(dest => dest.Title, act => act.MapFrom(src => src.Title))
                 .ForMember(dest => dest.WorkspaceName, act => act.MapFrom(src => src.Workspace.Name))

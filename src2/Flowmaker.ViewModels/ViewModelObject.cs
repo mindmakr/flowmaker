@@ -4,7 +4,7 @@ namespace Flowmaker.ViewModels
 {
     public abstract class ViewModelObject
     {
-        public Environment Environment { get; set; }
+        public EnvironmentVm Environment { get; set; }
     }
 
 }

@@ -1,12 +1,7 @@
 ﻿namespace Flowmaker.ViewModels.Views
 {
-    public class Environment
+    public class EnvironmentVm
     {
-        public Environment()
-        {
-
-        }
-
         public string Title { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string WorkspaceTitle { get; set; } = string.Empty;

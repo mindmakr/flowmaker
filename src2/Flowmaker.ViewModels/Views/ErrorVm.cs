@@ -2,7 +2,7 @@ using System;
 
 namespace Flowmaker.ViewModels.Views
 {
-    public class ErrorView
+    public class ErrorVm
     {
         public string RequestId { get; set; }
 
