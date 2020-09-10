@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace flowmaker.models
+namespace Flowmaker.Domains
 {
-    public class Slot : BaseModel
+    public class Slot : DomainObject
     {
         public string Hostname { get; set; }
         public Guid WorkspaceId { get; set; }

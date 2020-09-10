@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\flowmaker.models\flowmaker.models.csproj" />
+    <ProjectReference Include="..\Flowmaker.Domains\Flowmaker.Domains.csproj" />
   </ItemGroup>
 
 </Project>

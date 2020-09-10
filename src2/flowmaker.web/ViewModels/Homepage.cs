@@ -1,4 +1,4 @@
-﻿namespace flowmaker.web.ViewModels
+﻿namespace Flowmaker.Web.ViewModels
 {
     public class Homepage : ViewModelBase
     {

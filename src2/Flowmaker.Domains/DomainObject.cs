@@ -1,8 +1,9 @@
 ﻿using System;
 
-namespace flowmaker.models
+namespace Flowmaker.Domains
 {
-    public abstract class BaseModel {
+    public abstract class DomainObject
+    {
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }

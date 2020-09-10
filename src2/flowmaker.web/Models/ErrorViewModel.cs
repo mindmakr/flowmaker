@@ -1,6 +1,6 @@
 using System;
 
-namespace flowmaker.web.Models
+namespace Flowmaker.Web.Models
 {
     public class ErrorViewModel
     {

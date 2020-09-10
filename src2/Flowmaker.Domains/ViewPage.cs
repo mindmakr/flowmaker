@@ -1,6 +1,6 @@
-﻿namespace flowmaker.models
+﻿namespace Flowmaker.Domains
 {
-    public class ViewPage : BaseModel
+    public class ViewPage : DomainObject
     {
         public string FlowRoute { get; set; }
         public string Content { get; set; }

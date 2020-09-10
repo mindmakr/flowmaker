@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace flowmaker.models
+namespace Flowmaker.Domains
 {
-    public class Workspace : BaseModel
+    public class Workspace : DomainObject
     {
         public ICollection<Slot> Environments { get; } = new List<Slot>();
     }

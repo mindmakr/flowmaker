@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using flowmaker.models;
-using flowmaker.web.ViewModels;
+using Flowmaker.Domains;
+using Flowmaker.Web.ViewModels;
 
-namespace flowmaker.web.Mappers
+namespace Flowmaker.Web.Mappers
 {
     public class ViewModelMapperService
     {

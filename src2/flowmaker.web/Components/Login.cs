@@ -1,8 +1,8 @@
-﻿using flowmaker.models;
+﻿
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace flowmaker.web.Components
+namespace Flowmaker.Web.Components
 {
     public class Login : ViewComponent
     {

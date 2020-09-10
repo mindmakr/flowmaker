@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace flowmaker.web.Components
+namespace Flowmaker.Web.Components
 {
     public class Drawer : ViewComponent
     {
