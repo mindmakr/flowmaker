@@ -2,6 +2,8 @@
 {
     public class HomepageVm : ViewModelObject
     {
+        public string RequestRoute { get; set; }
+        public string FlowTitle { get; set; }
 
     }
 }

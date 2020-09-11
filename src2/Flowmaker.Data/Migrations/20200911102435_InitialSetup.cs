@@ -66,25 +66,6 @@ namespace Flowmaker.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Flows",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true),
-                    DisplayOrder = table.Column<int>(nullable: false),
-                    Disabled = table.Column<bool>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    UpdatedAt = table.Column<DateTime>(nullable: false),
-                    Slug = table.Column<string>(nullable: true),
-                    ParentSlug = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Flows", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Workspaces",
                 columns: table => new
                 {
@@ -234,7 +215,7 @@ namespace Flowmaker.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "FlowInstances",
+                name: "Flows",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -246,21 +227,14 @@ namespace Flowmaker.Data.Migrations
                     UpdatedAt = table.Column<DateTime>(nullable: false),
                     Slug = table.Column<string>(nullable: true),
                     ParentSlug = table.Column<string>(nullable: true),
-                    FlowId = table.Column<Guid>(nullable: false),
-                    SlotId = table.Column<Guid>(nullable: false)
+                    EnvironmentId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FlowInstances", x => x.Id);
+                    table.PrimaryKey("PK_Flows", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_FlowInstances_Flows_FlowId",
-                        column: x => x.FlowId,
-                        principalTable: "Flows",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_FlowInstances_Slots_SlotId",
-                        column: x => x.SlotId,
+                        name: "FK_Flows_Slots_EnvironmentId",
+                        column: x => x.EnvironmentId,
                         principalTable: "Slots",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -285,6 +259,16 @@ namespace Flowmaker.Data.Migrations
                 table: "Slots",
                 columns: new[] { "Id", "Hostname", "IsEditable", "Name", "Title", "WorkspaceId" },
                 values: new object[] { new Guid("f7c2b760-c763-4a9d-a5e0-5e72c5e22d6b"), "dev.hca.local", true, "dev", "Development", new Guid("57594ca7-a447-4e3b-b894-c971f3e6821b") });
+
+            migrationBuilder.InsertData(
+                table: "Flows",
+                columns: new[] { "Id", "CreatedAt", "Disabled", "DisplayOrder", "EnvironmentId", "Name", "ParentSlug", "Slug", "Title", "UpdatedAt" },
+                values: new object[] { new Guid("38881cc4-dac1-414a-b18a-7db338c0809e"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, 0, new Guid("f7c2b760-c763-4a9d-a5e0-5e72c5e22d6b"), "flow-homeage", "", "/", "Flow homepage", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+
+            migrationBuilder.InsertData(
+                table: "Flows",
+                columns: new[] { "Id", "CreatedAt", "Disabled", "DisplayOrder", "EnvironmentId", "Name", "ParentSlug", "Slug", "Title", "UpdatedAt" },
+                values: new object[] { new Guid("c71972e7-9a31-496f-a348-e1208a9186d3"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, 0, new Guid("f7c2b760-c763-4a9d-a5e0-5e72c5e22d6b"), "homeppage-all-development", "/", "/development", "Flow homepage", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -326,14 +310,9 @@ namespace Flowmaker.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FlowInstances_FlowId",
-                table: "FlowInstances",
-                column: "FlowId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FlowInstances_SlotId",
-                table: "FlowInstances",
-                column: "SlotId");
+                name: "IX_Flows_EnvironmentId",
+                table: "Flows",
+                column: "EnvironmentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Slots_WorkspaceId",
@@ -362,16 +341,13 @@ namespace Flowmaker.Data.Migrations
                 name: "ContentPages");
 
             migrationBuilder.DropTable(
-                name: "FlowInstances");
+                name: "Flows");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Flows");
 
             migrationBuilder.DropTable(
                 name: "Slots");

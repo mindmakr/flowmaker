@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmaker.ViewModels", "Flo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmaker.Entities", "Flowmaker.Entities\Flowmaker.Entities.csproj", "{16A4D2BF-1D44-4B8F-97A2-F9F41AEC57B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowmaker.Services", "Flowmaker.Services\Flowmaker.Services.csproj", "{B806FDAF-1E98-45BF-93A0-991B141A50F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,18 @@ Global
 		{16A4D2BF-1D44-4B8F-97A2-F9F41AEC57B3}.Release|iPhone.Build.0 = Release|Any CPU
 		{16A4D2BF-1D44-4B8F-97A2-F9F41AEC57B3}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{16A4D2BF-1D44-4B8F-97A2-F9F41AEC57B3}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{B806FDAF-1E98-45BF-93A0-991B141A50F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B806FDAF-1E98-45BF-93A0-991B141A50F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B806FDAF-1E98-45BF-93A0-991B141A50F8}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{B806FDAF-1E98-45BF-93A0-991B141A50F8}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{B806FDAF-1E98-45BF-93A0-991B141A50F8}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{B806FDAF-1E98-45BF-93A0-991B141A50F8}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{B806FDAF-1E98-45BF-93A0-991B141A50F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B806FDAF-1E98-45BF-93A0-991B141A50F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B806FDAF-1E98-45BF-93A0-991B141A50F8}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{B806FDAF-1E98-45BF-93A0-991B141A50F8}.Release|iPhone.Build.0 = Release|Any CPU
+		{B806FDAF-1E98-45BF-93A0-991B141A50F8}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{B806FDAF-1E98-45BF-93A0-991B141A50F8}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +111,7 @@ Global
 		{9C74059C-624E-4F23-AE35-7D1FD5F22C58} = {7219AAE9-3C8E-4BC0-A252-8EFD8C33138B}
 		{58909E87-5806-4C09-8F46-FE44FE124160} = {7219AAE9-3C8E-4BC0-A252-8EFD8C33138B}
 		{16A4D2BF-1D44-4B8F-97A2-F9F41AEC57B3} = {7219AAE9-3C8E-4BC0-A252-8EFD8C33138B}
+		{B806FDAF-1E98-45BF-93A0-991B141A50F8} = {7219AAE9-3C8E-4BC0-A252-8EFD8C33138B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D08E8FB2-F2EE-422C-A6AC-BE3BF0D7CC90}

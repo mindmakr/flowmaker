@@ -12,13 +12,13 @@ namespace Flowmaker.ViewModels.Mappers
         {
             _mapper = mapper;
         }
-        public EnvironmentVm ToEnvironmentVm(Slot slot)
+        public EnvironmentVm ToEnvironmentVm(Environment slot)
         {
             return slot == null
             ? new EnvironmentVm { IsAvailable = false }
             : _mapper.Map<EnvironmentVm>(slot);
         }
-        public EditorVm ToDrawerVm(HomepageVm vm)
+        public EditorVm ToDrawerVm(ViewModelObject vm)
         {
             return new EditorVm { Environment = vm.Environment };
         }

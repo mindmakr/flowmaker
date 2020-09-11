@@ -14,7 +14,7 @@ using Microsoft.Extensions.Hosting;
 using AutoMapper;
 using Flowmaker.ViewModels.Mappers;
 using Flowmaker.Data;
-
+using Flowmaker.Web.Middlewares;
 namespace Flowmaker.Web
 {
     public class Startup
@@ -29,6 +29,7 @@ namespace Flowmaker.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddAutoMapper(typeof(ViewModelsProfile) /*, ...*/);
             services.AddSingleton<ViewModelMapperService>();
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -55,16 +56,10 @@ namespace Flowmaker.Web
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-            app.Use(async (context, next) =>
-            {
-                await next();
-                if (context.Response.StatusCode == 404)
-                {
-                    context.Request.Path = "/Home";
-                    await next();
-                }
-            });
+
             app.UseStaticFiles();
+
+            app.UseRedirect404Route();
 
             app.UseRouting();
 
