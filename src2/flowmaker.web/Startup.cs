@@ -15,6 +15,8 @@ using AutoMapper;
 using Flowmaker.ViewModels.Mappers;
 using Flowmaker.Data;
 using Flowmaker.Web.Middlewares;
+using Flowmaker.Services;
+
 namespace Flowmaker.Web
 {
     public class Startup
@@ -32,6 +34,7 @@ namespace Flowmaker.Web
 
             services.AddAutoMapper(typeof(ViewModelsProfile) /*, ...*/);
             services.AddSingleton<ViewModelMapperService>();
+            services.AddScoped<CoreService>();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
