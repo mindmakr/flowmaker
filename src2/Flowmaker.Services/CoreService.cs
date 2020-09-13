@@ -31,11 +31,5 @@ namespace Flowmaker.Services
             return _map.ToFlowmakerPageVm(path, env, flows);
 
         }
-        
-        public PrivacyVm GetPrivacyVm(string hostname)
-        {
-            var env = _dbContext.Environments.Include(t => t.Project).FirstOrDefault(s => hostname == s.Hostname.ToLower());
-            return new PrivacyVm { Environment = _map.ToEnvironmentVm(env) };
-        }
     }
 }

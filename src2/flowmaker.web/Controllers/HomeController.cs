@@ -28,12 +28,6 @@ namespace Flowmaker.Web.Controllers
             return View(_service.GetHomepageVm(hostname,path));
         }
 
-        public IActionResult Privacy()
-        {
-            var hostname = Request.Host.Host.ToLower();
-            return View(_service.GetPrivacyVm(hostname));
-        }
-
         public IActionResult Page404()
         {
             return NotFound();
