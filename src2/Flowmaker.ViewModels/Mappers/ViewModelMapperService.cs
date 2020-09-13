@@ -38,21 +38,19 @@ namespace Flowmaker.ViewModels.Mappers
             return new HeaderVm { Environment = vm.Environment };
         }
 
-        public FlowmakerPageVm ToFlowmakerPageVm(Environment env, IEnumerable<Flow> flows)
+        public FlowmakerPageVm ToFlowmakerPageVm(string path, Environment env, IEnumerable<Flow> flows)
         {
             var vm = new FlowmakerPageVm
             {
+                RequestPath = path,
                 Environment = _mapper.Map<EnvironmentVm>(env),
                 Project = _mapper.Map<ProjectVm>(env.Project),
                 Flows = _mapper.Map<IEnumerable<FlowVm>>(flows)
             };
+            vm.ViewPage = vm.Flows!=null && vm.Flows.Any(f=>f.Slug==path)? vm.Flows.FirstOrDefault(f => f.Slug == path).ViewPage:null;
             if (vm.IsEditable)
             {
                 vm.Editor = new EditorVm { Environment = vm.Environment, Flows = vm.Flows, Project = vm.Project };
-            }
-            if (vm.IsAvailable)
-            {
-                vm.Title = vm.Project.Title;
             }
             return vm;
         }

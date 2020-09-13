@@ -27,8 +27,8 @@ namespace Flowmaker.Services
             var vm = new FlowmakerPageVm();
             var env = _dbContext.Environments.Include(t => t.Project).FirstOrDefault(s => hostname == s.Hostname.ToLower());
             if (env == null) return vm;
-            var flows = _dbContext.Flows.OrderBy(o=>o.DisplayOrder).Where(f => f.EnvironmentId == env.Id && !f.Disabled && (f.Slug == path || f.ParentSlug == path)).ToList();
-            return _map.ToFlowmakerPageVm(env, flows);
+            var flows = _dbContext.Flows.Include(f=>f.ViewPage).OrderBy(o=>o.DisplayOrder).Where(f => f.EnvironmentId == env.Id && !f.Disabled && (f.Slug == path || f.ParentSlug == path)).ToList();
+            return _map.ToFlowmakerPageVm(path, env, flows);
 
         }
         

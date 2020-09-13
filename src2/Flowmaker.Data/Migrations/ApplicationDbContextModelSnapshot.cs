@@ -28,7 +28,7 @@ namespace Flowmaker.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("getutcdate()");
 
                     b.Property<bool>("Disabled")
                         .ValueGeneratedOnAdd()
@@ -41,28 +41,28 @@ namespace Flowmaker.Data.Migrations
                         .HasDefaultValue(100);
 
                     b.Property<string>("Hostname")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(64)")
+                        .HasMaxLength(64);
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(32)")
-                        .HasMaxLength(32);
+                        .HasColumnType("nvarchar(64)")
+                        .HasMaxLength(64);
 
                     b.Property<Guid>("ProjectId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Title")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(64)")
-                        .HasMaxLength(64)
-                        .HasDefaultValue("Untitled Slot");
+                        .HasColumnType("nvarchar(132)")
+                        .HasMaxLength(132)
+                        .HasDefaultValue("Untitled Environment");
 
                     b.Property<DateTime>("UpdatedAt")
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("getutcdate()");
 
                     b.HasKey("Id");
 
@@ -104,10 +104,14 @@ namespace Flowmaker.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getutcdate()");
 
                     b.Property<bool>("Disabled")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<int>("DisplayOrder")
                         .HasColumnType("int");
@@ -116,19 +120,31 @@ namespace Flowmaker.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(64)")
+                        .HasMaxLength(64);
 
                     b.Property<string>("ParentSlug")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1024)")
+                        .HasMaxLength(1024);
 
                     b.Property<string>("Slug")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1024)")
+                        .HasMaxLength(1024);
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(132)")
+                        .HasMaxLength(132)
+                        .HasDefaultValue("Untitled Flow");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getutcdate()");
 
                     b.HasKey("Id");
 
@@ -142,7 +158,7 @@ namespace Flowmaker.Data.Migrations
                             Id = new Guid("38881cc4-dac1-414a-b18a-7db338c0809e"),
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disabled = false,
-                            DisplayOrder = 0,
+                            DisplayOrder = 50,
                             EnvironmentId = new Guid("f7c2b760-c763-4a9d-a5e0-5e72c5e22d6b"),
                             Name = "flow-homeage",
                             ParentSlug = "",
@@ -155,7 +171,7 @@ namespace Flowmaker.Data.Migrations
                             Id = new Guid("c71972e7-9a31-496f-a348-e1208a9186d3"),
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Disabled = false,
-                            DisplayOrder = 0,
+                            DisplayOrder = 100,
                             EnvironmentId = new Guid("f7c2b760-c763-4a9d-a5e0-5e72c5e22d6b"),
                             Name = "homeppage-all-development",
                             ParentSlug = "/",
@@ -174,7 +190,7 @@ namespace Flowmaker.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("getutcdate()");
 
                     b.Property<bool>("Disabled")
                         .ValueGeneratedOnAdd()
@@ -191,20 +207,20 @@ namespace Flowmaker.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(32)")
-                        .HasMaxLength(32);
+                        .HasColumnType("nvarchar(64)")
+                        .HasMaxLength(64);
 
                     b.Property<string>("Title")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(64)")
-                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(132)")
+                        .HasMaxLength(132)
                         .HasDefaultValue("Untitled Project");
 
                     b.Property<DateTime>("UpdatedAt")
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("getutcdate()");
 
                     b.HasKey("Id");
 
@@ -245,29 +261,70 @@ namespace Flowmaker.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getutcdate()");
 
                     b.Property<bool>("Disabled")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<int>("DisplayOrder")
                         .HasColumnType("int");
 
-                    b.Property<string>("FlowRoute")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("FlowId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(64)")
+                        .HasMaxLength(64);
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(132)")
+                        .HasMaxLength(132)
+                        .HasDefaultValue("Untitled View");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getutcdate()");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("FlowId")
+                        .IsUnique();
+
                     b.ToTable("ContentPages");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("6e1c7243-df64-49a1-b489-b2cded451450"),
+                            Content = "<h1>Homepage from Db</h1>",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Disabled = false,
+                            DisplayOrder = 50,
+                            FlowId = new Guid("38881cc4-dac1-414a-b18a-7db338c0809e"),
+                            Name = "page1",
+                            Title = "First Page",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("aba759fe-c97f-434d-bf62-3d7774af9d56"),
+                            Content = "<h2>Development from Db</h2>",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Disabled = false,
+                            DisplayOrder = 100,
+                            FlowId = new Guid("c71972e7-9a31-496f-a348-e1208a9186d3"),
+                            Name = "page2",
+                            Title = "Second Page",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -484,6 +541,15 @@ namespace Flowmaker.Data.Migrations
                     b.HasOne("Flowmaker.Entities.Environment", "Environment")
                         .WithMany()
                         .HasForeignKey("EnvironmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Flowmaker.Entities.ViewPage", b =>
+                {
+                    b.HasOne("Flowmaker.Entities.Flow", "Flow")
+                        .WithOne("ViewPage")
+                        .HasForeignKey("Flowmaker.Entities.ViewPage", "FlowId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

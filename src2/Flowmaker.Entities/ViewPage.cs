@@ -1,8 +1,11 @@
-﻿namespace Flowmaker.Entities
+﻿using System;
+
+namespace Flowmaker.Entities
 {
     public class ViewPage : EntityObject
     {
-        public string FlowRoute { get; set; }
+        public Guid FlowId { get; set; }
+        public Flow Flow { get; set; }
         public string Content { get; set; }
     }
 }

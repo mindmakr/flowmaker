@@ -47,35 +47,16 @@ namespace Flowmaker.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ContentPages",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true),
-                    DisplayOrder = table.Column<int>(nullable: false),
-                    Disabled = table.Column<bool>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    UpdatedAt = table.Column<DateTime>(nullable: false),
-                    FlowRoute = table.Column<string>(nullable: true),
-                    Content = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ContentPages", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Projects",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(maxLength: 32, nullable: false),
-                    Title = table.Column<string>(maxLength: 64, nullable: true, defaultValue: "Untitled Project"),
+                    Name = table.Column<string>(maxLength: 64, nullable: false),
+                    Title = table.Column<string>(maxLength: 132, nullable: true, defaultValue: "Untitled Project"),
                     DisplayOrder = table.Column<int>(nullable: false, defaultValue: 100),
                     Disabled = table.Column<bool>(nullable: false, defaultValue: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "getdate()"),
-                    UpdatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "getdate()"),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "getutcdate()"),
+                    UpdatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "getutcdate()"),
                     EditableHostname = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -194,13 +175,13 @@ namespace Flowmaker.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(maxLength: 32, nullable: false),
-                    Title = table.Column<string>(maxLength: 64, nullable: true, defaultValue: "Untitled Slot"),
+                    Name = table.Column<string>(maxLength: 64, nullable: false),
+                    Title = table.Column<string>(maxLength: 132, nullable: true, defaultValue: "Untitled Environment"),
                     DisplayOrder = table.Column<int>(nullable: false, defaultValue: 100),
                     Disabled = table.Column<bool>(nullable: false, defaultValue: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "getdate()"),
-                    UpdatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "getdate()"),
-                    Hostname = table.Column<string>(maxLength: 128, nullable: true),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "getutcdate()"),
+                    UpdatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "getutcdate()"),
+                    Hostname = table.Column<string>(maxLength: 64, nullable: true),
                     ProjectId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
@@ -219,14 +200,14 @@ namespace Flowmaker.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 64, nullable: false),
+                    Title = table.Column<string>(maxLength: 132, nullable: true, defaultValue: "Untitled Flow"),
                     DisplayOrder = table.Column<int>(nullable: false),
-                    Disabled = table.Column<bool>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    UpdatedAt = table.Column<DateTime>(nullable: false),
-                    Slug = table.Column<string>(nullable: true),
-                    ParentSlug = table.Column<string>(nullable: true),
+                    Disabled = table.Column<bool>(nullable: false, defaultValue: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "getutcdate()"),
+                    UpdatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "getutcdate()"),
+                    Slug = table.Column<string>(maxLength: 1024, nullable: false),
+                    ParentSlug = table.Column<string>(maxLength: 1024, nullable: false),
                     EnvironmentId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
@@ -236,6 +217,31 @@ namespace Flowmaker.Data.Migrations
                         name: "FK_Flows_Environments_EnvironmentId",
                         column: x => x.EnvironmentId,
                         principalTable: "Environments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ContentPages",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(maxLength: 64, nullable: false),
+                    Title = table.Column<string>(maxLength: 132, nullable: true, defaultValue: "Untitled View"),
+                    DisplayOrder = table.Column<int>(nullable: false),
+                    Disabled = table.Column<bool>(nullable: false, defaultValue: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "getutcdate()"),
+                    UpdatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "getutcdate()"),
+                    FlowId = table.Column<Guid>(nullable: false),
+                    Content = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ContentPages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ContentPages_Flows_FlowId",
+                        column: x => x.FlowId,
+                        principalTable: "Flows",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -262,13 +268,23 @@ namespace Flowmaker.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Flows",
-                columns: new[] { "Id", "CreatedAt", "Disabled", "DisplayOrder", "EnvironmentId", "Name", "ParentSlug", "Slug", "Title", "UpdatedAt" },
-                values: new object[] { new Guid("38881cc4-dac1-414a-b18a-7db338c0809e"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, 0, new Guid("f7c2b760-c763-4a9d-a5e0-5e72c5e22d6b"), "flow-homeage", "", "/", "Flow homepage", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                columns: new[] { "Id", "DisplayOrder", "EnvironmentId", "Name", "ParentSlug", "Slug", "Title" },
+                values: new object[] { new Guid("38881cc4-dac1-414a-b18a-7db338c0809e"), 50, new Guid("f7c2b760-c763-4a9d-a5e0-5e72c5e22d6b"), "flow-homeage", "", "/", "Flow homepage" });
 
             migrationBuilder.InsertData(
                 table: "Flows",
-                columns: new[] { "Id", "CreatedAt", "Disabled", "DisplayOrder", "EnvironmentId", "Name", "ParentSlug", "Slug", "Title", "UpdatedAt" },
-                values: new object[] { new Guid("c71972e7-9a31-496f-a348-e1208a9186d3"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, 0, new Guid("f7c2b760-c763-4a9d-a5e0-5e72c5e22d6b"), "homeppage-all-development", "/", "/development", "Development", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                columns: new[] { "Id", "DisplayOrder", "EnvironmentId", "Name", "ParentSlug", "Slug", "Title" },
+                values: new object[] { new Guid("c71972e7-9a31-496f-a348-e1208a9186d3"), 100, new Guid("f7c2b760-c763-4a9d-a5e0-5e72c5e22d6b"), "homeppage-all-development", "/", "/development", "Development" });
+
+            migrationBuilder.InsertData(
+                table: "ContentPages",
+                columns: new[] { "Id", "Content", "DisplayOrder", "FlowId", "Name", "Title" },
+                values: new object[] { new Guid("6e1c7243-df64-49a1-b489-b2cded451450"), "<h1>Homepage from Db</h1>", 50, new Guid("38881cc4-dac1-414a-b18a-7db338c0809e"), "page1", "First Page" });
+
+            migrationBuilder.InsertData(
+                table: "ContentPages",
+                columns: new[] { "Id", "Content", "DisplayOrder", "FlowId", "Name", "Title" },
+                values: new object[] { new Guid("aba759fe-c97f-434d-bf62-3d7774af9d56"), "<h2>Development from Db</h2>", 100, new Guid("c71972e7-9a31-496f-a348-e1208a9186d3"), "page2", "Second Page" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -310,6 +326,12 @@ namespace Flowmaker.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ContentPages_FlowId",
+                table: "ContentPages",
+                column: "FlowId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Environments_ProjectId",
                 table: "Environments",
                 column: "ProjectId");
@@ -341,13 +363,13 @@ namespace Flowmaker.Data.Migrations
                 name: "ContentPages");
 
             migrationBuilder.DropTable(
-                name: "Flows");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Flows");
 
             migrationBuilder.DropTable(
                 name: "Environments");

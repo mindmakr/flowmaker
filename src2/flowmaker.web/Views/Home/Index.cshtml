@@ -1,4 +1,4 @@
 ﻿@model Flowmaker.ViewModels.Views.FlowmakerPageVm;
 <vc:header />
-<h1>@Model.RequestPath</h1>
+@Html.Raw(Model.ViewPageContent)
 <vc:footer />
