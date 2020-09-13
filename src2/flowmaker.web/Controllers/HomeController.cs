@@ -25,7 +25,8 @@ namespace Flowmaker.Web.Controllers
         {
             var hostname = Request.Host.Host.ToLower();
             var path = Request.Headers[":path"].ToString().ToLower();
-            return View(_service.GetHomepageVm(hostname,path));
+            var vm = _service.GetHomepageVm(hostname, path);
+            return View(vm);
         }
 
         public IActionResult Page404()

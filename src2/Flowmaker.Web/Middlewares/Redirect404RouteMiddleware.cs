@@ -1,6 +1,7 @@
 ﻿using Flowmaker.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,8 +22,9 @@ namespace Flowmaker.Web.Middlewares
             await _next(context);
             if (context.Response.StatusCode == 404)
             {
+                var hostname = context.Request.Host.Host.ToLower();
                 var path = context.Request.Path.ToString().ToLower();
-                var flow = dbContext.Flows.FirstOrDefault(f => f.Slug == path);
+                var flow = dbContext.Flows.Include(f => f.Environment).FirstOrDefault(f => f.Slug == path && f.Environment.Hostname.ToLower()==hostname);
                 if (flow != null)
                 {
                     context.Request.Path = "/";
