@@ -1,12 +1,14 @@
 ﻿@model Flowmaker.ViewModels.Views.EditorVm;
-<sl-drawer label="@Model.Environment.ProductTitle" class="drawer-overview">
-    @Model.Environment.Title
+<sl-drawer label="@Model.Project.Title" class="drawer-overview">
     <sl-button slot="footer" type="primary">Close</sl-button>
+    <ul>
+        @foreach (var flow in Model.Flows)
+        {
+            <li>@flow.Title</li>
+        }
+    </ul>
 </sl-drawer>
 <sl-button id="open">Open Drawer</sl-button>
-<div>
-    Total flows @Model.Flows.Count()
-</div>
 <script>
     (() => {
         const drawer = document.querySelector('.drawer-overview');

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Flowmaker.Entities;
 using Flowmaker.ViewModels.Components;
-using Flowmaker.ViewModels.Views;
 
 namespace Flowmaker.ViewModels.Mappers
 {
@@ -10,15 +9,17 @@ namespace Flowmaker.ViewModels.Mappers
     {
         public ViewModelsProfile()
         {
-            CreateMap<Environment, EnvironmentVm>()
-                .ForMember(dest => dest.Name, act => act.MapFrom(src => src.Name))
-                .ForMember(dest => dest.Title, act => act.MapFrom(src => src.Title))
-                .ForMember(dest => dest.WorkspaceName, act => act.MapFrom(src => src.Workspace.Name))
-                .ForMember(dest => dest.IsAvailable, act => act.MapFrom(src => src != null))
-                .ForMember(dest => dest.WorkspaceTitle, act => act.MapFrom(src => src.Workspace.Title));
-
-            CreateMap<Flow, FlowVm>()
-              .ForMember(dest => dest.Title, act => act.MapFrom(src => src.Title));
+            CreateMap<Environment, EnvironmentVm>();
+            //CreateMap<Environment, EnvironmentVm>()
+            //    .ForMember(dest => dest.Name, act => act.MapFrom(src => src.Name))
+            //    .ForMember(dest => dest.Title, act => act.MapFrom(src => src.Title))
+            //    .ForMember(dest => dest.WorkspaceName, act => act.MapFrom(src => src.Project.Name))
+            //    .ForMember(dest => dest.IsAvailable, act => act.MapFrom(src => src != null))
+            //    .ForMember(dest => dest.WorkspaceTitle, act => act.MapFrom(src => src.Project.Title));
+            CreateMap<Project, ProjectVm>();
+            CreateMap<Flow, FlowVm>();
+            //CreateMap<Flow, FlowVm>()
+            //  .ForMember(dest => dest.Title, act => act.MapFrom(src => src.Title));
         }
     }
 }
