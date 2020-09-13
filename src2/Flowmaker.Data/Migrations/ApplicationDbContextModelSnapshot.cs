@@ -298,7 +298,7 @@ namespace Flowmaker.Data.Migrations
                     b.HasIndex("FlowId")
                         .IsUnique();
 
-                    b.ToTable("ContentPages");
+                    b.ToTable("ViewPages");
 
                     b.HasData(
                         new

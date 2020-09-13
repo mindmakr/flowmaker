@@ -1,4 +1,7 @@
 ﻿@model Flowmaker.ViewModels.Views.FlowmakerPageVm;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +19,7 @@
             <vc:lonely />
             IgnoreBody();
         }
-        else if (Model.IsEditable)
+        else if (Model.IsEditable && SignInManager.IsSignedIn(User))
         {
             <vc:editor />
             <div id="fmBody">

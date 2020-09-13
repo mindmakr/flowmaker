@@ -25,7 +25,7 @@ namespace Flowmaker.Data
         public DbSet<Flow> Flows { get; set; }
         public DbSet<Environment> Environments { get; set; }
         public DbSet<Project> Projects { get; set; }
-        public DbSet<ViewPage> ContentPages { get; set; }
+        public DbSet<ViewPage> ViewPages { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

@@ -5,6 +5,7 @@ namespace Flowmaker.ViewModels.Views
 {
     public class EditorVm : ViewModelObject
     {
+        public FlowVm Flow { get; set; }
         public IEnumerable<FlowVm> Flows { get; set; }
         public IEnumerable<EnvironmentVm> Environments { get; set; }
     }

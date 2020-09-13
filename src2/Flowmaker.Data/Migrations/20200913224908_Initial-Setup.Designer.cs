@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Flowmaker.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200913220708_Initial-Setup")]
+    [Migration("20200913224908_Initial-Setup")]
     partial class InitialSetup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -300,7 +300,7 @@ namespace Flowmaker.Data.Migrations
                     b.HasIndex("FlowId")
                         .IsUnique();
 
-                    b.ToTable("ContentPages");
+                    b.ToTable("ViewPages");
 
                     b.HasData(
                         new

@@ -25,11 +25,15 @@ namespace Flowmaker.Services
         public FlowmakerPageVm GetHomepageVm(string hostname, string path)
         {
             var vm = new FlowmakerPageVm();
-            var env = _dbContext.Environments.Include(t => t.Project).FirstOrDefault(s => hostname == s.Hostname.ToLower());
+            var env = _dbContext.Environments.Include(t => t.Project).FirstOrDefault(s => hostname == s.Hostname.ToLower() && !s.Disabled);
             if (env == null) return vm;
-            var flows = _dbContext.Flows.Include(f=>f.ViewPage).OrderBy(o=>o.DisplayOrder).Where(f => f.EnvironmentId == env.Id && !f.Disabled && (f.Slug == path || f.ParentSlug == path)).ToList();
-            return _map.ToFlowmakerPageVm(path, env, flows);
-
+            var flows = _dbContext.Flows.Include(f => f.ViewPage).OrderBy(o => o.DisplayOrder).Where(f => f.EnvironmentId == env.Id && !f.Disabled && (f.Slug == path || f.ParentSlug == path)).ToList();
+            if (env.Hostname.ToLower()==env.Project.EditableHostname.ToLower())
+            {
+                var envs = _dbContext.Environments.Include(t => t.Project).Where(s => env.ProjectId == s.ProjectId && !s.Disabled).ToList();
+                return _map.ToFlowmakerPageVm(path, env, flows, envs);
+            }
+            return _map.ToFlowmakerPageVm(path, env, flows,null);
         }
     }
 }

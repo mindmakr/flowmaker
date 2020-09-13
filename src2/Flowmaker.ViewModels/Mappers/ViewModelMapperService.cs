@@ -20,11 +20,6 @@ namespace Flowmaker.ViewModels.Mappers
             ? new EnvironmentVm { }
             : _mapper.Map<EnvironmentVm>(env);
         }
-        public EditorVm ToEditorVm(ViewModelObject vm)
-        {
-            if (vm == null) return null;
-            return new EditorVm { Environment = vm.Environment };
-        }
 
         public FooterVm ToFooterVm(ViewModelObject vm)
         {
@@ -38,7 +33,7 @@ namespace Flowmaker.ViewModels.Mappers
             return new HeaderVm { Environment = vm.Environment };
         }
 
-        public FlowmakerPageVm ToFlowmakerPageVm(string path, Environment env, IEnumerable<Flow> flows)
+        public FlowmakerPageVm ToFlowmakerPageVm(string path, Environment env, IEnumerable<Flow> flows, IEnumerable<Environment> envs)
         {
             var vm = new FlowmakerPageVm
             {
@@ -47,10 +42,12 @@ namespace Flowmaker.ViewModels.Mappers
                 Project = _mapper.Map<ProjectVm>(env.Project),
                 Flows = _mapper.Map<IEnumerable<FlowVm>>(flows)
             };
-            vm.ViewPage = vm.Flows!=null && vm.Flows.Any(f=>f.Slug==path)? vm.Flows.FirstOrDefault(f => f.Slug == path).ViewPage:null;
+            vm.ViewPage = vm.Flows.Any(f => f.Slug == vm.RequestPath)?vm.Flows.FirstOrDefault(f => f.Slug == vm.RequestPath).ViewPage:null;
             if (vm.IsEditable)
             {
                 vm.Editor = new EditorVm { Environment = vm.Environment, Flows = vm.Flows, Project = vm.Project };
+                vm.Editor.Flow = vm.Flows.Any(f => f.Slug == vm.RequestPath) ? vm.Flows.FirstOrDefault(f => f.Slug == vm.RequestPath) : null;
+                vm.Editor.Environments = _mapper.Map<IEnumerable<EnvironmentVm>>(envs);
             }
             return vm;
         }

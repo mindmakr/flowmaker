@@ -222,7 +222,7 @@ namespace Flowmaker.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ContentPages",
+                name: "ViewPages",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -237,9 +237,9 @@ namespace Flowmaker.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ContentPages", x => x.Id);
+                    table.PrimaryKey("PK_ViewPages", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ContentPages_Flows_FlowId",
+                        name: "FK_ViewPages_Flows_FlowId",
                         column: x => x.FlowId,
                         principalTable: "Flows",
                         principalColumn: "Id",
@@ -277,12 +277,12 @@ namespace Flowmaker.Data.Migrations
                 values: new object[] { new Guid("c71972e7-9a31-496f-a348-e1208a9186d3"), 100, new Guid("f7c2b760-c763-4a9d-a5e0-5e72c5e22d6b"), "homeppage-all-development", "/", "/development", "Development" });
 
             migrationBuilder.InsertData(
-                table: "ContentPages",
+                table: "ViewPages",
                 columns: new[] { "Id", "Content", "DisplayOrder", "FlowId", "Name", "Title" },
                 values: new object[] { new Guid("6e1c7243-df64-49a1-b489-b2cded451450"), "<h1>Homepage from Db</h1>", 50, new Guid("38881cc4-dac1-414a-b18a-7db338c0809e"), "page1", "First Page" });
 
             migrationBuilder.InsertData(
-                table: "ContentPages",
+                table: "ViewPages",
                 columns: new[] { "Id", "Content", "DisplayOrder", "FlowId", "Name", "Title" },
                 values: new object[] { new Guid("aba759fe-c97f-434d-bf62-3d7774af9d56"), "<h2>Development from Db</h2>", 100, new Guid("c71972e7-9a31-496f-a348-e1208a9186d3"), "page2", "Second Page" });
 
@@ -326,12 +326,6 @@ namespace Flowmaker.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ContentPages_FlowId",
-                table: "ContentPages",
-                column: "FlowId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Environments_ProjectId",
                 table: "Environments",
                 column: "ProjectId");
@@ -340,6 +334,12 @@ namespace Flowmaker.Data.Migrations
                 name: "IX_Flows_EnvironmentId",
                 table: "Flows",
                 column: "EnvironmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ViewPages_FlowId",
+                table: "ViewPages",
+                column: "FlowId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -360,7 +360,7 @@ namespace Flowmaker.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "ContentPages");
+                name: "ViewPages");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

@@ -1,13 +1,25 @@
 ﻿@model Flowmaker.ViewModels.Views.EditorVm;
 <sl-drawer label="@Model.Project.Title" class="drawer-overview">
     <sl-button slot="footer" type="primary">Close</sl-button>
+    <p>Env:</p>
+    <ul>
+        @foreach (var env in Model.Environments)
+        {
+            <li>@env.Title</li>
+        }
+    </ul>
+    <p>Flows:</p>
     <ul>
         @foreach (var flow in Model.Flows)
         {
             <li>@flow.Title</li>
         }
     </ul>
-    <vc:login/>
+    @if (Model.Flow != null)
+    {
+        <p>Page</p>
+        @Model.Flow.ViewPage.Content
+    }
 </sl-drawer>
 <sl-button id="open">Open Drawer</sl-button>
 <script>
