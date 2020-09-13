@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "provider": "jsdelivr",
+      "library": "lit-element@2.4.0",
+      "destination": "wwwroot/lib/lit-element/"
+    }
+  ,
+{
+  "library": "@shoelace-style/shoelace@2.0.0-beta.18",
+  "destination": "wwwroot/lib/shoelace-style/shoelace/"
+}
+,
+{
+  "provider": "unpkg",
+  "library": "@shoelace-style/shoelace@2.0.0-beta.18",
+  "destination": "wwwroot/lib/shoelace-style/shoelace/"
+}
+]
+}

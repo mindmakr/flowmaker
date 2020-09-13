@@ -1,6 +1,5 @@
 ﻿using Flowmaker.ViewModels;
 using Flowmaker.ViewModels.Mappers;
-using Flowmaker.ViewModels.Views;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Flowmaker.Web.Components
@@ -15,7 +14,7 @@ namespace Flowmaker.Web.Components
         //public async Task<IViewComponentResult> InvokeAsync(int maxPriority, bool isDone)
         public IViewComponentResult Invoke()
         {
-            return View(_mapperService.ToDrawerVm(ViewData.Model as ViewModelObject));
+            return View(_mapperService.ToEditorVm(ViewData.Model as ViewModelObject));
         }
     }
 }

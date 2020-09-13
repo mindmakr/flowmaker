@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Flowmaker.Entities;
-using Flowmaker.ViewModels.Components;
 using Flowmaker.ViewModels.Views;
 
 namespace Flowmaker.ViewModels.Mappers
@@ -18,9 +17,19 @@ namespace Flowmaker.ViewModels.Mappers
             ? new EnvironmentVm { IsAvailable = false }
             : _mapper.Map<EnvironmentVm>(slot);
         }
-        public EditorVm ToDrawerVm(ViewModelObject vm)
+        public EditorVm ToEditorVm(ViewModelObject vm)
         {
             return new EditorVm { Environment = vm.Environment };
+        }
+
+        public FooterVm ToFooterVm(ViewModelObject vm)
+        {
+            return new FooterVm { Environment = vm.Environment };
+        }
+
+        public HeaderVm ToHeaderVm(ViewModelObject vm)
+        {
+            return new HeaderVm { Environment = vm.Environment };
         }
     }
 }

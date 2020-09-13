@@ -22,12 +22,12 @@ namespace Flowmaker.Services
             _dbContext = dbContext;
         }
 
-        public HomepageVm GetHomepageVm(string hostname,string path)
+        public FlowmakerPageVm GetHomepageVm(string hostname,string path)
         {
             var slot = _dbContext.Slots.Include(t => t.Workspace).FirstOrDefault(s => hostname == s.Hostname.ToLower());
             var flow = _dbContext.Flows.FirstOrDefault(f => f.Slug == path);
             if (flow == null) return null;
-            var vm = new HomepageVm { Environment = _vmms.ToEnvironmentVm(slot), RequestRoute = path, FlowTitle = flow != null ? flow.Title : "NOT FOUND" };
+            var vm = new FlowmakerPageVm { Environment = _vmms.ToEnvironmentVm(slot), RequestPath = path, Title = flow != null ? flow.Title : "NOT FOUND" };
             return vm;
         }
         

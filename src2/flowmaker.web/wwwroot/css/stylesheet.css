@@ -14,55 +14,7 @@ body {
 
 }
 
-@media screen and (max-height: 450px) {
-    #fmEditor {
-        padding-top: 15px;
-    }
-
-        #fmEditor a {
-            font-size: 18px;
-        }
-}
-
 #fmBody {
-    transition: margin-left .5s;
-    padding: 16px;
-}
-#fmEditor-CloseButton {
-    font-size:30px;
-    cursor:pointer;
+
 }
 
-#fmEditor {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.2s;
-    padding-top: 60px;
-}
-
-    #fmEditor a {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
-        font-size: 25px;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
-    }
-
-        #fmEditor a:hover {
-            color: #f1f1f1;
-        }
-
-    #fmEditor .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-    }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Flowmaker.Entities;
+using Flowmaker.ViewModels.Components;
 using Flowmaker.ViewModels.Views;
 
 namespace Flowmaker.ViewModels.Mappers
@@ -15,6 +16,9 @@ namespace Flowmaker.ViewModels.Mappers
                 .ForMember(dest => dest.WorkspaceName, act => act.MapFrom(src => src.Workspace.Name))
                 .ForMember(dest => dest.IsAvailable, act => act.MapFrom(src => src != null))
                 .ForMember(dest => dest.WorkspaceTitle, act => act.MapFrom(src => src.Workspace.Title));
+
+            CreateMap<Flow, FlowVm>()
+              .ForMember(dest => dest.Title, act => act.MapFrom(src => src.Title));
         }
     }
 }
