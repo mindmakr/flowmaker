@@ -33,7 +33,6 @@ namespace Flowmaker.Web
         {
 
             services.AddAutoMapper(typeof(ViewModelsProfile) /*, ...*/);
-            services.AddSingleton<ViewModelMapperService>();
             services.AddScoped<CoreService>();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(

@@ -43,6 +43,7 @@ namespace Flowmaker.Data
                 eb.Property(b => b.UpdatedAt).HasDefaultValueSql("getutcdate()").ValueGeneratedOnAddOrUpdate().IsRowVersion();
             });
 
+            modelBuilder.Entity<Environment>().Ignore(c => c.IsEditable);
             modelBuilder.Entity<Environment>(eb =>
             {
                 eb.Property(b => b.Name).HasMaxLength(MAX_NAME_SIZE).IsRequired();
