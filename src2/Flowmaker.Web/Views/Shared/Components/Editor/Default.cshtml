@@ -1,37 +1,41 @@
 ﻿@model Flowmaker.ViewModels.Views.EditorVm;
-<sl-drawer label="@Model.Project.Title" class="drawer-overview">
-    <sl-tab-group placement="left">
-        <sl-tab slot="nav" panel="Environments">Environments</sl-tab>
-        <sl-tab slot="nav" panel="Page">Page</sl-tab>
-        <sl-tab  slot="nav" panel="Flows">Flows</sl-tab>
-        <sl-tab-panel name="Environments">
-            @foreach (var env in Model.Environments)
-            {
-                <p>@env.Title</p>
-            }
-        </sl-tab-panel>
-        <sl-tab-panel name="Page">
-            <p>@Model.Flow.ViewPage.Content</p>
-        </sl-tab-panel>
-        <sl-tab-panel name="Flows">
-            @foreach (var flow in Model.Flows)
-            {
-                <p>@flow.Title</p>
-            }
-        </sl-tab-panel>
-    </sl-tab-group>
-    <sl-button slot="footer" type="primary">Close</sl-button>
-</sl-drawer>
-<sl-button id="open">Open Drawer</sl-button>
+<div class="drawer">
+    <div class="drawer__header">
+        <p class="text--title">Drawer</p>
+    </div>
+    <div class="drawer__content">
+        <p class="text--normal">This  is a content</p>
+    </div>
+</div>
+<div id="open">Open Drawer</div>
 <style>
+    .drawer {
+        font-size: 2rem;
+        background-color: aquamarine;
+        border: dashed;
+        float: right;
+        height: 80vh;
+        width: 40rem;
+    }
 
+    .drawer__header {
+        background-color: gray;
+    }
+
+    .text--title {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .text--normal {
+        font-weight: normal;
+        font-size: 1rem;
+    }
+
+    .drawer__content {
+        background-color: blue;
+    }
 </style>
 <script>
-    (() => {
-        const drawer = document.querySelector('.drawer-overview');
-        const openButton = drawer.nextElementSibling;
-        const closeButton = drawer.querySelector('sl-button[type="primary"]');
-        openButton.addEventListener('click', () => drawer.show());
-        closeButton.addEventListener('click', () => drawer.hide());
-    })();
+
 </script>

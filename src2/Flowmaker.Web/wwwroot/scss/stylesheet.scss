@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    background-color: #ffffff;
+    color: #444545;
+}
+
+/* https://github.com/shoelace-style/shoelace/blob/current/src/styles/shoelace.scss */
+:root {
+    /* Changes the primary color to a shade of orange at 90% saturation */
+    --sl-color-primary-hue: 30;
+    --sl-color-primary-saturation: 90%;
+}
+
+#fmContainer {}
+
+#fmBody {}

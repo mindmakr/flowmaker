@@ -1,7 +1,8 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
@@ -16,3 +17,4 @@ body {
   --sl-color-primary-hue: 30;
   --sl-color-primary-saturation: 90%;
 }
+/*# sourceMappingURL=stylesheet.css.map */

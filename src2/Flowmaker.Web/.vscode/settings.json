@@ -1,0 +1,7 @@
+{
+    "compile-hero.disable-compile-files-on-did-save-code": false,
+    "compile-hero.scss-output-directory": "../../wwwroot/css",
+    "compile-hero.sass-output-directory": "../../wwwroot/css",
+    "compile-hero.less-output-directory": "../../wwwroot/css",
+    "compile-hero.javascript-output-directory": "../../wwwroot/js",
+}
